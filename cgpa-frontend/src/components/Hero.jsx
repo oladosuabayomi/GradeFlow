@@ -1,12 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Hero = () => {
     return (
         <section className="min-h-screen flex items-center pt-32 pb-12 px-4 md:px-8 relative overflow-hidden bg-pattern">
             {/* Decorative Elements */}
             {/* Top Right Dotted Grid */}
-            <div className="absolute top-20 right-0 -mr-20 opacity-10 hidden lg:block pointer-events-none">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.1 }}
+                transition={{ duration: 1 }}
+                className="absolute top-20 right-0 -mr-20 hidden lg:block pointer-events-none"
+            >
                 <svg width="404" height="404" fill="none" viewBox="0 0 404 404">
                     <defs>
                         <pattern
@@ -33,11 +40,14 @@ const Hero = () => {
                         fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)"
                     />
                 </svg>
-            </div>
+            </motion.div>
 
             {/* Bottom Left Squiggle */}
-            <svg
-                className="absolute bottom-0 left-0 -ml-20 mb-20 w-64 h-64 text-brand-green opacity-5 -z-10 transform -rotate-12 pointer-events-none"
+            <motion.svg
+                initial={{ opacity: 0, rotate: -12 }}
+                animate={{ opacity: 0.05, rotate: -12 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="absolute bottom-0 left-0 -ml-20 mb-20 w-64 h-64 text-brand-green -z-10 transform pointer-events-none"
                 viewBox="0 0 200 200"
                 fill="none"
             >
@@ -47,10 +57,15 @@ const Hero = () => {
                     strokeWidth="10"
                     fill="none"
                 />
-            </svg>
+            </motion.svg>
 
             {/* Middle Left Dotted Grid */}
-            <div className="absolute top-1/3 left-0 -ml-10 opacity-10 hidden md:block -z-10 pointer-events-none">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.1 }}
+                transition={{ duration: 1, delay: 0.2 }}
+                className="absolute top-1/3 left-0 -ml-10 hidden md:block -z-10 pointer-events-none"
+            >
                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
                     <defs>
                         <pattern
@@ -72,61 +87,100 @@ const Hero = () => {
                     </defs>
                     <rect width="100" height="100" fill="url(#dots-sm)" />
                 </svg>
-            </div>
+            </motion.div>
 
             {/* Extra Snake Rope near Image */}
-            <svg
-                className="absolute top-1/4 right-1/3 w-32 h-6 text-brand-blue opacity-10 -z-10 transform rotate-45 pointer-events-none"
+            <motion.svg
+                initial={{ opacity: 0, rotate: 45 }}
+                animate={{ opacity: 0.1, rotate: 45 }}
+                transition={{ duration: 1, delay: 0.7 }}
+                className="absolute top-1/4 right-1/3 w-32 h-6 text-brand-blue -z-10 transform pointer-events-none"
                 viewBox="0 0 100 20"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="3"
             >
                 <path d="M0 10 Q 10 0 20 10 T 40 10 T 60 10 T 80 10 T 100 10" />
-            </svg>
+            </motion.svg>
 
             <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6 z-10">
-                    <h1 className="text-5xl md:text-6xl font-bold leading-tight text-brand-blue">
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="text-5xl md:text-6xl font-bold leading-tight text-brand-blue"
+                    >
                         Calculate Your{" "}
                         <span className="text-brand-green">CGPA</span> <br />
                         with Precision
-                    </h1>
-                    <p className="text-lg text-slate-500 max-w-lg leading-relaxed">
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                            duration: 0.6,
+                            delay: 0.1,
+                            ease: "easeOut",
+                        }}
+                        className="text-lg text-slate-500 max-w-lg leading-relaxed"
+                    >
                         Track your academic progress, plan your semesters, and
                         achieve your goals with our easy-to-use university grade
                         calculator.
-                    </p>
+                    </motion.p>
 
-                    <div className="flex flex-wrap gap-4 pt-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                            duration: 0.6,
+                            delay: 0.2,
+                            ease: "easeOut",
+                        }}
+                        className="flex flex-wrap gap-4 pt-4"
+                    >
                         <Link
                             to="/calculator"
-                            className="px-8 py-4 bg-brand-green hover:bg-brand-blue text-white font-semibold rounded-full shadow-lg shadow-brand-green/30 transition-transform transform hover:-translate-y-1"
+                            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-brand-green hover:bg-brand-blue transition-colors"
                         >
                             Start Calculating Now
+                            <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>
                         <a
                             href="#how-it-works"
-                            className="px-8 py-4 bg-transparent border-2 border-brand-blue/20 text-brand-blue font-semibold rounded-full hover:bg-brand-bg transition-colors"
+                            className="inline-flex items-center px-6 py-3 border-2 border-brand-blue/20 text-base font-medium rounded-full text-brand-blue hover:bg-brand-blue/5 transition-colors"
                         >
                             How It Works
                         </a>
-                    </div>
+                    </motion.div>
 
-                    <svg
-                        className="w-24 h-6 text-brand-green opacity-60"
+                    <motion.svg
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 0.6, x: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="w-24 h-6 text-brand-green"
                         viewBox="0 0 100 20"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="4"
                     >
                         <path d="M0 10 Q 10 0 20 10 T 40 10 T 60 10 T 80 10 T 100 10" />
-                    </svg>
+                    </motion.svg>
                 </div>
 
                 <div className="relative w-full flex justify-center items-center lg:justify-end">
                     <div className="relative z-10">
-                        <div className="relative">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{
+                                duration: 0.8,
+                                delay: 0.2,
+                                ease: "easeOut",
+                            }}
+                            className="relative"
+                        >
                             {/* Glow Effect */}
                             <div className="absolute -inset-4 bg-brand-green/20 blur-3xl rounded-full"></div>
 
@@ -136,7 +190,7 @@ const Hero = () => {
                                 alt="GradeFlow Calculator Interface"
                                 className="relative w-full max-w-lg lg:max-w-2xl h-auto rounded-xl shadow-lg border-4 border-white/50 backdrop-blur-sm"
                             />
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>

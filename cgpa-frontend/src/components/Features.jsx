@@ -7,12 +7,19 @@ import {
     ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Features = () => {
     return (
         <div className="py-24 bg-slate-50 relative" id="features">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center max-w-3xl mx-auto mb-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center max-w-3xl mx-auto mb-16"
+                >
                     <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium text-brand-green bg-brand-green/10 mb-4">
                         The LASU Advantage
                     </div>
@@ -40,11 +47,17 @@ const Features = () => {
                             See How It Works
                         </a>
                     </div>
-                </div>
+                </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {/* Card 1: Precision Scale (Large Vertical) */}
-                    <div className="lg:row-span-2 bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col justify-between overflow-hidden group hover:shadow-md transition-shadow">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                        className="lg:row-span-2 bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col justify-between overflow-hidden group hover:shadow-md transition-shadow"
+                    >
                         <div>
                             <div className="h-12 w-12 rounded-xl bg-brand-bg flex items-center justify-center text-brand-green mb-6">
                                 <BarChart3 className="h-6 w-6" />
@@ -90,7 +103,7 @@ const Features = () => {
                                     B=3.0
                                 </span>
                             </div>
-                            <div className="w-1/4 bg-brand-green rounded-t-lg h-[100%] relative shadow-lg shadow-brand-green/20">
+                            <div className="w-1/4 bg-brand-green rounded-t-lg h-full relative shadow-lg shadow-brand-green/20">
                                 {/* Tooltip */}
                                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-brand-green text-white text-xs font-bold px-2 py-1 rounded shadow-sm whitespace-nowrap">
                                     A=5.0
@@ -98,10 +111,16 @@ const Features = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Card 2: PDF Export (Wide Horizontal) */}
-                    <div className="lg:col-span-2 bg-brand-blue rounded-3xl p-8 text-white shadow-lg relative overflow-hidden group">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="lg:col-span-2 bg-brand-blue rounded-3xl p-8 text-white shadow-lg relative overflow-hidden group"
+                    >
                         <div className="relative z-10">
                             <div className="h-12 w-12 rounded-xl bg-white/10 flex items-center justify-center text-white mb-6 backdrop-blur-sm">
                                 <Download className="h-6 w-6" />
@@ -119,10 +138,16 @@ const Features = () => {
                         {/* Decorative Background Circles */}
                         <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-brand-green/20 rounded-full blur-3xl group-hover:bg-brand-green/30 transition-colors"></div>
                         <div className="absolute bottom-0 right-20 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl"></div>
-                    </div>
+                    </motion.div>
 
                     {/* Card 3: Privacy (Small) */}
-                    <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
+                    >
                         <div className="h-12 w-12 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 mb-6">
                             <Lock className="h-6 w-6" />
                         </div>
@@ -134,10 +159,16 @@ const Features = () => {
                             grades on our servers, ensuring your academic record
                             remains private.
                         </p>
-                    </div>
+                    </motion.div>
 
                     {/* Card 4: Mobile Ready (Small) */}
-                    <div className="bg-brand-green rounded-3xl p-8 text-white shadow-lg hover:shadow-xl transition-shadow">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                        className="bg-brand-green rounded-3xl p-8 text-white shadow-lg hover:shadow-xl transition-shadow"
+                    >
                         <div className="h-12 w-12 rounded-xl bg-white/20 flex items-center justify-center text-white mb-6 backdrop-blur-sm">
                             <Smartphone className="h-6 w-6" />
                         </div>
@@ -146,7 +177,7 @@ const Features = () => {
                             Fully optimized for smartphones. Calculate your CGPA
                             on the go, whether you're in class or at home.
                         </p>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </div>

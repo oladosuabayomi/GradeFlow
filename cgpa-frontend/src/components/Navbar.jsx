@@ -1,9 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
     return (
-        <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+        <motion.div
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4"
+        >
             <nav className="bg-white/80 backdrop-blur-md border border-white/40 shadow-lg rounded-full px-8 py-3 flex items-center justify-between w-full max-w-5xl">
                 <div className="flex items-center gap-2">
                     <Link to="/" className="flex items-center gap-2">
@@ -20,7 +26,7 @@ const Navbar = () => {
                         href="#features"
                         className="hover:text-brand-green transition-colors"
                     >
-                        Features 
+                        Features
                     </a>
                     <a
                         href="#how-it-works"
@@ -29,7 +35,7 @@ const Navbar = () => {
                         How It Works
                     </a>
                     <a
-                        href="#faqs"
+                        href="#faq"
                         className="hover:text-brand-green transition-colors"
                     >
                         FAQs
@@ -41,11 +47,11 @@ const Navbar = () => {
                         to="/calculator"
                         className="bg-brand-green text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-brand-blue transition-all shadow-lg shadow-brand-green/20 hover:shadow-brand-blue/20 transform hover:-translate-y-0.5"
                     >
-                        Launch App
+                        Launch Calculator
                     </Link>
                 </div>
             </nav>
-        </div>
+        </motion.div>
     );
 };
 

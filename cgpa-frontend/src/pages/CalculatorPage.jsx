@@ -6,11 +6,14 @@ import {
     Info,
     Download,
     RotateCcw,
+    Loader2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const CalculatorPage = () => {
+    const [pageLoading, setPageLoading] = useState(true);
     const [semesters, setSemesters] = useState([
         {
             id: Date.now(),
@@ -21,6 +24,15 @@ const CalculatorPage = () => {
     const [result, setResult] = useState(null);
     const [loading, setLoading] = useState(false);
     const [inputMode, setInputMode] = useState("score"); // 'score' or 'gp'
+
+    // Simulate page loading delay
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setPageLoading(false);
+        }, 3000); // 3 seconds delay
+
+        return () => clearTimeout(timer);
+    }, []);
 
     // Auto-calculate whenever semesters change
     useEffect(() => {
@@ -35,6 +47,24 @@ const CalculatorPage = () => {
             setResult(null);
         }
     }, [semesters, inputMode]);
+
+    if (pageLoading) {
+        return (
+            <div className="min-h-screen bg-brand-bg flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center space-y-4">
+                    <div className="relative">
+                        <div className="h-16 w-16 rounded-full border-4 border-brand-green/20 border-t-brand-green animate-spin"></div>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="h-8 w-8 rounded-full bg-brand-green/10"></div>
+                        </div>
+                    </div>
+                    <p className="text-brand-blue font-medium animate-pulse">
+                        Loading Calculator...
+                    </p>
+                </div>
+            </div>
+        );
+    }
 
     const handleInputChange = (semIndex, courseIndex, field, value) => {
         // Validation for Score/Grade Point
@@ -205,7 +235,12 @@ const CalculatorPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="min-h-screen bg-slate-50 font-sans text-slate-800"
+        >
             <Toaster position="top-right" />
             {/* Navbar */}
             <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
@@ -219,14 +254,6 @@ const CalculatorPage = () => {
                             Back to Home
                         </span>
                     </Link>
-                    {/* <div className="flex items-center gap-3">
-                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                            Student:
-                        </span>
-                        <span className="text-sm font-semibold text-slate-800 bg-gray-100 px-3 py-1 rounded-full">
-                            Oladosu A.
-                        </span>
-                    </div> */}
                 </div>
             </nav>
 
@@ -619,7 +646,7 @@ const CalculatorPage = () => {
                     </div>
                 </div>
             </main>
-        </div>
+        </motion.div>
     );
 };
 
