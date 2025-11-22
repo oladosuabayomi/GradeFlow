@@ -1,0 +1,1 @@
+web: java -jar target/cgpa-calculator-1.0-SNAPSHOT.jar
