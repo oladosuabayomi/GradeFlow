@@ -59,5 +59,38 @@ public class Course {
     }
 
     public String getGrade() { return grade; }
+    
     public int getGradePoint() { return gradePoint; }
+    public void setGradePoint(int gradePoint) {
+        this.gradePoint = gradePoint;
+        // Reverse map to Grade Letter and Representative Score if score wasn't the source
+        if (this.score == 0.0) {
+            switch (gradePoint) {
+                case 5: 
+                    this.grade = "A"; 
+                    this.score = 70.0; // Representative score
+                    break;
+                case 4: 
+                    this.grade = "B"; 
+                    this.score = 60.0; 
+                    break;
+                case 3: 
+                    this.grade = "C"; 
+                    this.score = 50.0; 
+                    break;
+                case 2: 
+                    this.grade = "D"; 
+                    this.score = 45.0; 
+                    break;
+                case 1: 
+                    this.grade = "E"; 
+                    this.score = 40.0; 
+                    break;
+                default: 
+                    this.grade = "F"; 
+                    this.score = 0.0; 
+                    break;
+            }
+        }
+    }
 }
