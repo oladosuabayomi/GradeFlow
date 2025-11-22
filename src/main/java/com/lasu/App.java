@@ -3,6 +3,7 @@ package com.lasu;
 import com.lasu.model.Semester;
 import com.lasu.model.Student;
 import io.javalin.Javalin;
+import io.javalin.http.staticfiles.Location;
 
 public class App {
     public static void main(String[] args) {
@@ -14,13 +15,15 @@ public class App {
             config.bundledPlugins.enableCors(cors -> {
                 cors.addRule(it -> it.anyHost());
             });
+            // Serve static files from the classpath (src/main/resources/public)
+            config.staticFiles.add("/public", Location.CLASSPATH);
+            // Handle SPA routing - redirect all 404s to index.html
+            config.spaRoot.addFile("/", "/public/index.html");
         }).start(port);
 
-        // 3. Test Route (To prove it works)
-        app.get("/", ctx -> ctx.result("CSC 303 Backend is Running!"));
-
-        // 4. Calculate Route (The Brain)
-        app.post("/calculate", ctx -> {
+        // 3. API Routes
+        // Calculate Route (The Brain)
+        app.post("/api/calculate", ctx -> {
             try {
                 // 1. Receive raw JSON data from Frontend
                 Student student = ctx.bodyAsClass(Student.class);

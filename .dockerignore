@@ -1,0 +1,10 @@
+target/
+.git/
+.idea/
+node_modules/
+cgpa-frontend/node_modules/
+cgpa-frontend/dist/
+*.class
+*.jar
+*.log
+.DS_Store
