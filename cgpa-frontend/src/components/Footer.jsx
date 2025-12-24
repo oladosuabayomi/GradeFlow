@@ -100,6 +100,19 @@ const Footer = () => {
                     className="mt-12 pt-8 border-t border-white/10 text-center text-slate-500 text-sm"
                 >
                     © {new Date().getFullYear()} GradeFlow. All rights reserved.
+                    {/* add developer profile */}
+                    <div>
+                        {" "}
+                        Developed with ❤️ by a fellow student,{" "}
+                        <a
+                            href="https://www.linkedin.com/in/oladosuabayomi/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-brand-green hover:underline ml-1"
+                        >
+                            Oladosu Abayomi
+                        </a>
+                    </div>
                 </motion.div>
             </div>
         </footer>
