@@ -1,8 +1,15 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    useLocation,
+} from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import CalculatorPage from "./pages/CalculatorPage";
 import ReactGA from "react-ga4";
+
+ReactGA.initialize("G-3YEJ1JKF4V");
 
 const PageTracker = () => {
     const location = useLocation();
@@ -15,7 +22,7 @@ const PageTracker = () => {
         });
     }, [location]);
 
-    return null; // This component renders nothing visually
+    return null;
 };
 
 function App() {
